@@ -1,0 +1,14 @@
+.ticket{
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    width: fit-content;
+    height: 30px;
+    padding: 0 10px;
+    transform: rotate(-90deg);
+    &__text{
+        margin: 0;
+        font-size: 1rem;
+        text-align: center;
+    }
+}
