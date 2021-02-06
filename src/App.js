@@ -49,6 +49,7 @@ const App = () => {
       <Header />
       {isAuthed ? (
         <AppStyles>
+          <Nav />
           <main>
             <Switch>
               <Route exact path="/">
@@ -69,7 +70,6 @@ const App = () => {
           >
             Sign Out
           </button>
-          <Nav />
         </AppStyles>
       ) : (
         <Landing />

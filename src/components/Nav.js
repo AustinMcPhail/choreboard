@@ -1,7 +1,11 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import Brand from './Brand'
 
 const NavStyles = styled.nav`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   ul {
     display: flex;
     width: 100%;
@@ -17,8 +21,29 @@ const NavStyles = styled.nav`
 `
 
 const Nav = () => (
-  <NavStyles className="bg-indigo-400 text-white bg-gradient-to-br from-purple-400 via-purple-500 to-purple-600">
-    <ul>
+  <NavStyles>
+    <div className="p-4">
+      <button className="text-blue-500" type="button">
+        <svg
+          className="w-6 h-6 transform scale-150"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+      </button>
+    </div>
+    <div className="transform scale-50">
+      <Brand />
+    </div>
+    {/* <ul>
       <li>
         <Link to="/chores">
           <svg
@@ -73,7 +98,7 @@ const Nav = () => (
           </svg>
         </Link>
       </li>
-    </ul>
+    </ul> */}
   </NavStyles>
 )
 
