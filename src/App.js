@@ -11,6 +11,7 @@ import Profile from './pages/Profile'
 import fire, { writeChore } from './utils/fire'
 import ChorePostit from './components/ChorePostit'
 import ChorePostitLarge from './components/ChorePostitLarge'
+import NewChore from './pages/NewChore'
 
 const AppStyles = styled.div`
   max-height: 100vh;
@@ -19,6 +20,8 @@ const AppStyles = styled.div`
   display: flex;
   flex-direction: column;
   main {
+    margin-top: 2rem;
+    margin-inline: 1rem;
     overflow-y: auto;
     height: 100%;
   }
@@ -26,7 +29,6 @@ const AppStyles = styled.div`
 
 const App = () => {
   const [isAuthed, setIsAuthed] = useState(false)
-
   useEffect(() => {
     fire.auth().onAuthStateChanged((user) => {
       setIsAuthed(!!user)
@@ -45,7 +47,7 @@ const App = () => {
               <Route exact path="/">
                 <Home />
               </Route>
-              <Route path="/chores">
+              <Route exact path="/chores">
                 <Chores />
               </Route>
               <Route
@@ -54,22 +56,14 @@ const App = () => {
                 component={(routerProps) => <Profile {...routerProps} />}
               />
               <Route path="/postit" component={ChorePostitLarge} />
+              <Route exact path="/chores/new">
+                <NewChore />
+              </Route>
+              <Route path="/profile">
+                <Profile />
+              </Route>
             </Switch>
           </main>
-          <button
-            className="py-1 px-4 text-red-500"
-            onClick={() => writeChore()}
-            type="button"
-          >
-            Send test to db
-          </button>
-          <button
-            className="py-1 px-4 text-red-500"
-            onClick={() => fire.auth().signOut()}
-            type="button"
-          >
-            Sign Out
-          </button>
         </AppStyles>
       ) : (
         <Landing />

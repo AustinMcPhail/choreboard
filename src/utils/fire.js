@@ -17,12 +17,14 @@ const fire = firebase.apps.length
   ? firebase.app()
   : firebase.initializeApp(config)
 
-export const writeChore = (chore) => {
-  fire.database().ref('chores').push({
-    user: chore.user,
-    desc: 'description',
-    expiry: new Date().toISOString(),
-  })
+export const writeChore = (user, chore) => {
+  fire
+    .database()
+    .ref('chores')
+    .push({
+      user_id: user.uid,
+      ...chore,
+    })
 }
 
 export const getUserInfo = (id) => {
@@ -35,5 +37,11 @@ export const getUserInfo = (id) => {
       console.log(`getting user info for: ${user}`)
     })
 }
+export const getAllChores = () =>
+  fire
+    .database()
+    .ref('chores')
+    .once('value')
+    .then((res) => res.val())
 
 export default fire
