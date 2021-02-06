@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import ChoreList from '../components/ChoreList'
 import ChorePostit from '../components/ChorePostit'
 import '../styles/dolfer.scss'
 
@@ -10,28 +11,16 @@ const Chores = () => {
   useEffect(() => {
     getAllChores()
       .then((res) => {
-        console.log('res', res)
-        setChores(res)
+        setChores(Object.keys(res).map((key) => res[key]))
       })
       .catch((err) => console.error(err))
   }, [])
   return (
     <div>
-      {/* <h2>Chores</h2> */}
-      <Link to="/chores/new">Post</Link>
-      <div className="bg-dolfer h-auto pb-64 relitive rounded-md">
-        <div className="center-notch" />
-        <div className="left-notch" />
-        <div className="right-notch" />
-        <div className="flex justify-between">
-          <h4 className="pl-4 m-0">Chores</h4>
-          <h4 className="pr-6 m-0 text-blue-500">+</h4>
-        </div>
-        <div className="flex flex-wrap justify-center pt-5">
-          <ChorePostit />
-          <ChorePostit />
-        </div>
-      </div>
+      <h2>All Chores</h2>
+      <ChoreList chores={chores} />
+      <h2>Assigned Chores</h2>
+      <ChoreList chores={chores} />
     </div>
   )
 }

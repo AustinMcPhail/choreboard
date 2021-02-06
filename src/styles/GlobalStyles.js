@@ -38,6 +38,12 @@ const GlobalStyles = createGlobalStyle`
     h5 {font-size: 1.25rem;}
 
     small, .text_small {font-size: 0.8rem;}
+
+    .chore_list {
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: repeat(auto-fi, minmax(200px, 1fr));
+    }
 `
 
 export default GlobalStyles

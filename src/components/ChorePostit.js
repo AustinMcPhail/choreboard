@@ -32,8 +32,8 @@ function ChorePostit({
               </span>
             </h4>
           </div>
-          <div className="bg-yellow-500 w-10 h-10 absolute right-0 bottom-0" />
-          <div className="bg-white transform -rotate-45 w-16 h-10 absolute -right-6 -bottom-5" />
+          <div className="bg-yellow-200 w-10 h-10 absolute right-0 bottom-0" />
+          <div className="transform -rotate-45 w-16 h-10 absolute -right-6 -bottom-5" />
         </div>
         <div>
           <h4 className="m-0 text text-xl font-bold">{description}</h4>
