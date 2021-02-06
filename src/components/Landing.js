@@ -30,13 +30,13 @@ const Landing = () => {
       firebase.auth.FacebookAuthProvider.PROVIDER_ID,
     ],
     callbacks: {
-      signInSuccess: () => false,
+      signInSuccessWithAuthResult: () => false,
     },
   }
 
   return (
     <LandingStyled>
-      <div className="flex-grow grid place-items-center">
+      <div className="flex-grow grid place-items-center place-content-center">
         <div className="relative">
           <h1 className="title text-center text-6xl mb-0 font-bold relative">
             <div className="bg-blue-200 rounded-3xl w-full h-60 grid place-items-center absolute transform translate-x-1/2 -translate-y-1/2" />
