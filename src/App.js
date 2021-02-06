@@ -1,6 +1,3 @@
-import 'firebase/auth'
-import firebase from 'firebase/app'
-import 'firebase/firestore'
 import { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import styled from 'styled-components'
@@ -11,16 +8,7 @@ import Nav from './components/Nav'
 import Home from './pages/Home'
 import Chores from './pages/Chores'
 import Profile from './pages/Profile'
-
-const config = {
-  apiKey: 'AIzaSyA4q8PR7maTIJlNsg0Di8OI9V4eYYa1MTc',
-  authDomain: 'choreboard-32541.firebaseapp.com',
-}
-if (!firebase.apps.length) {
-  firebase.initializeApp(config)
-} else {
-  firebase.app()
-}
+import fire, { writeChore } from './utils/fire'
 
 const AppStyles = styled.div`
   max-height: 100vh;
@@ -38,7 +26,7 @@ const App = () => {
   const [isAuthed, setIsAuthed] = useState(false)
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => {
+    fire.auth().onAuthStateChanged((user) => {
       setIsAuthed(!!user)
     })
   }, [])
@@ -65,7 +53,14 @@ const App = () => {
           </main>
           <button
             className="py-1 px-4 text-red-500"
-            onClick={() => firebase.auth().signOut()}
+            onClick={() => writeChore()}
+            type="button"
+          >
+            Send test to db
+          </button>
+          <button
+            className="py-1 px-4 text-red-500"
+            onClick={() => fire.auth().signOut()}
             type="button"
           >
             Sign Out
