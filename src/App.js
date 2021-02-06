@@ -9,6 +9,8 @@ import Home from './pages/Home'
 import Chores from './pages/Chores'
 import Profile from './pages/Profile'
 import fire, { writeChore } from './utils/fire'
+import ChorePostit from './components/ChorePostit'
+import ChorePostitLarge from './components/ChorePostitLarge'
 
 const AppStyles = styled.div`
   max-height: 100vh;
@@ -46,9 +48,12 @@ const App = () => {
               <Route path="/chores">
                 <Chores />
               </Route>
-              <Route path="/profile">
-                <Profile />
-              </Route>
+              <Route
+                exact
+                path="/profile/:id"
+                component={(routerProps) => <Profile {...routerProps} />}
+              />
+              <Route path="/postit" component={ChorePostitLarge} />
             </Switch>
           </main>
           <button

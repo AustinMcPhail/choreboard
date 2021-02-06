@@ -25,4 +25,15 @@ export const writeChore = (chore) => {
   })
 }
 
+export const getUserInfo = (id) => {
+  fire
+    .database()
+    .ref(`users/${id}`)
+    .once('value')
+    .then((snapshot) => {
+      const user = snapshot.val()
+      console.log(`getting user info for: ${user}`)
+    })
+}
+
 export default fire
