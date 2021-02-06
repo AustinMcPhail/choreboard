@@ -13,8 +13,8 @@ import Chores from './pages/Chores'
 import Profile from './pages/Profile'
 
 const config = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  apiKey: 'AIzaSyA4q8PR7maTIJlNsg0Di8OI9V4eYYa1MTc',
+  authDomain: 'choreboard-32541.firebaseapp.com',
 }
 if (!firebase.apps.length) {
   firebase.initializeApp(config)
