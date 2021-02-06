@@ -1,23 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
+import logo from './logo_color.svg'
 
 const BrandStyles = styled.div`
-  flex-grow: 1;
-  .title {
-    &:after {
-      content: 'Chore Board';
-      display: block;
-      text-align: center;
-      color: black;
-      mix-blend-mode: overlay;
-    }
+  h1 {
+    font-size: clamp(1rem, 6vw, 3rem);
   }
 `
 const Brand = () => (
-  <BrandStyles className="relative">
-    <h1 className="title text-center text-6xl mb-0 font-bold relative">
-      <div className="bg-blue-200 rounded-3xl w-full h-60 grid place-items-center absolute transform translate-x-1/2 -translate-y-1/2" />
-    </h1>
+  <BrandStyles className="p-4">
+    <div className="flex justify-end">
+      <img className="w-1/5" src={logo} alt="logo" />
+    </div>
+    <h1 className="text-right text-5xl mb-0 font-bold">Choreboard</h1>
   </BrandStyles>
 )
 
