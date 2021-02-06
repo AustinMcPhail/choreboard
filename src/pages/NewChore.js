@@ -23,8 +23,8 @@ const NewChore = () => {
       details,
       tasks: [
         {
-          tasktitle: taskTitle,
-          taskvalue: taskValue,
+          taskTitle,
+          taskValue,
         },
         {
           taskTitle: taskTitle2,

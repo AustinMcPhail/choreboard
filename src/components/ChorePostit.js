@@ -2,12 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 /* eslint react/prop-types: 0 */
 
-function ChorePostit({
-  id = '',
-  tasks = [],
-  expiry = '',
-  description = 'hello',
-}) {
+function ChorePostit({ id = '', tasks = [], expiry = '', details = '' }) {
   return (
     <Link to={`/chores/${id}`}>
       <div className="bg-yellow-200 grid grid-cols-2 p-4 rounded-sm relative w-full">
@@ -36,7 +31,7 @@ function ChorePostit({
           <div className="transform -rotate-45 w-16 h-10 absolute -right-6 -bottom-5" />
         </div>
         <div>
-          <h4 className="m-0 text text-xl font-bold">{description}</h4>
+          <h4 className="m-0 text text-xl font-bold">{details}</h4>
           <ul>
             {tasks.map((t) => (
               <li className="flex justify-between">
