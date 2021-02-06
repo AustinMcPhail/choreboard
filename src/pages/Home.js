@@ -17,7 +17,12 @@ const Home = () => {
     getAllChores()
       .then((res) => {
         if (res) {
-          setChores(Object.keys(res).map((key) => res[key]))
+          setChores(
+            Object.keys(res).map((key) => {
+              res[key].id = key
+              return res[key]
+            })
+          )
         }
       })
       .catch((err) => console.error(err))
@@ -27,10 +32,12 @@ const Home = () => {
       <div className="mb-4">
         <PosterBoard />
       </div>
-      {chores?.length > 0 && <ChoreList title="Featured" chores={chores} />}
-      {!chores?.length && (
-        <p className="text-sm text-center">No Chores Posted...</p>
-      )}
+      <div>
+        {chores?.length > 0 && <ChoreList title="Featured" chores={chores} />}
+        {!chores?.length && (
+          <p className="text-sm text-center">No Chores Posted...</p>
+        )}
+      </div>
     </>
   )
 }

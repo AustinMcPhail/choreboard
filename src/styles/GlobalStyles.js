@@ -40,7 +40,8 @@ const GlobalStyles = createGlobalStyle`
     small, .text_small {font-size: 0.8rem;}
 
     .chore_list {
-        display: grid;
+        display: flex;
+        flex-direction: column;
         gap: 2rem;
         grid-template-columns: repeat(auto-fi, minmax(200px, 1fr));
     }

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 function ChorePostit({ id = '', tasks = [], expiry = '', details = '' }) {
   return (
-    <Link to={`/chores/${id}`}>
+    <Link to={`/chore/${id}`}>
       <div className="bg-yellow-200 grid grid-cols-2 p-4 rounded-sm relative w-full">
         <div>
           <img

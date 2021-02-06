@@ -11,7 +11,13 @@ const Chores = () => {
   useEffect(() => {
     getAllChores()
       .then((res) => {
-        if (res) setChores(Object.keys(res).map((key) => res[key]))
+        if (res)
+          setChores(
+            Object.keys(res).map((key) => {
+              res[key].id = key
+              return res[key]
+            })
+          )
       })
       .catch((err) => console.error(err))
   }, [])

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import ChorePostit from './ChorePostit'
 
 const ChoreList = ({ title = '', chores = [] }) => (
-  <div className="bg-dolfer h-full relative rounded-md overflow-y-auto overflow-x-hidden">
+  <div className="bg-dolfer h-full relative rounded-md">
     <div className="center-notch hidden" />
     <div className="left-notch" />
     <div className="right-notch hidden" />

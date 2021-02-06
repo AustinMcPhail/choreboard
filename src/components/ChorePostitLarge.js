@@ -45,7 +45,7 @@ function ChorePostitLarge({ match }) {
           chore.tasks.length &&
           chore.tasks.map((t) => (
             <div className="flex justify-between items-center">
-              <span className="">{t.taskTitle}</span>
+              <span>{t.taskTitle}</span>
               <hr className="border-1 mx-2 h-full border-red-200 w-full" />
               <span>${t.taskValue}</span>
             </div>
