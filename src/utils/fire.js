@@ -17,12 +17,12 @@ const fire = firebase.apps.length
   ? firebase.app()
   : firebase.initializeApp(config)
 
-export const writeChore = (user, chore) => {
+export const writeChore = ({ uid }, chore) => {
   fire
     .database()
     .ref('chores')
     .push({
-      user_id: user.uid,
+      uid,
       ...chore,
     })
 }

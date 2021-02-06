@@ -13,8 +13,8 @@ function Profile() {
     },
     []
   )
-
   const user = useFirebaseUser()
+
   return (
     <div className="flex flex-col">
       <div className="bg-gray-500 w-48 h-48 rounded-full mx-auto mt-5">

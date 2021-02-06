@@ -23,6 +23,7 @@ const AppStyles = styled.div`
     margin-top: 2rem;
     margin-inline: 1rem;
     overflow-y: auto;
+    overflow-x: hidden;
     height: 100%;
   }
 `
@@ -55,10 +56,16 @@ const App = () => {
                 path="/profile/:id"
                 component={(routerProps) => <Profile {...routerProps} />}
               />
-              <Route path="/postit" component={ChorePostitLarge} />
               <Route exact path="/chores/new">
                 <NewChore />
               </Route>
+              <Route
+                exact
+                path="/chore/:id"
+                component={(routerProps) => (
+                  <ChorePostitLarge {...routerProps} />
+                )}
+              />
               <Route path="/profile">
                 <Profile />
               </Route>
