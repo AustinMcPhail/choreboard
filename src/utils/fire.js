@@ -13,10 +13,13 @@ const config = {
   appId: '1:290120382749:web:6196030ccbeca6446bc9f4',
 }
 
-const fire = firebase.initializeApp(config)
+const fire = firebase.apps.length
+  ? firebase.app()
+  : firebase.initializeApp(config)
 
 export const writeChore = (chore) => {
   fire.database().ref('chores').push({
+    user: chore.user,
     desc: 'description',
     expiry: new Date().toISOString(),
   })
