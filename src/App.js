@@ -1,22 +1,49 @@
+import 'firebase/auth'
+import firebase from 'firebase/app'
+import 'firebase/firestore'
 import { Helmet } from 'react-helmet'
-import styled from 'styled-components'
+import { useEffect, useState } from 'react'
+import { FirebaseAuth } from 'react-firebaseui'
 import GlobalStyles from './styles/GlobalStyles'
+import Header from './components/Header'
+import Landing from './components/Landing'
 
-const App = () => (
-  <>
-    <GlobalStyles />
-    <Helmet>
-      <meta charSet="utf-8" />
-      <title>Choreboard</title>
-      <link rel="preconnect" href="https://fonts.gstatic.com" />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
-        rel="stylesheet"
-      />
-    </Helmet>
-    <div className="p-10 rounded-md shadow-md bg-blue-500 mx-2">
-      <p className="text-white text-2xl">Hello world</p>
-    </div>
-  </>
-)
+const config = {
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+}
+if (!firebase.apps.length) {
+  firebase.initializeApp(config)
+} else {
+  firebase.app()
+}
+
+const App = () => {
+  const [isAuthed, setIsAuthed] = useState(false)
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      setIsAuthed(!!user)
+    })
+  }, [])
+
+  return (
+    <>
+      <GlobalStyles />
+      <Header />
+      {isAuthed ? (
+        <>
+          <div className="p-10 rounded-md shadow-md bg-green-500 mx-2">
+            <p className="text-white text-2xl">Authed</p>
+            <button onClick={() => firebase.auth().signOut()} type="button">
+              Sign Out
+            </button>
+          </div>
+        </>
+      ) : (
+        <Landing />
+      )}
+    </>
+  )
+}
 export default App
