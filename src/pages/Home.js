@@ -22,7 +22,7 @@ const Home = () => {
   return (
     <HomeStyle>
       <h2>Home</h2>
-      <ChoreList chores={chores} />
+      <ChoreList title="Featured" chores={chores} />
     </HomeStyle>
   )
 }

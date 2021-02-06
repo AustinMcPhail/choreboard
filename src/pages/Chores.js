@@ -17,10 +17,12 @@ const Chores = () => {
   }, [])
   return (
     <div>
-      <h2>All Chores</h2>
-      <ChoreList chores={chores} />
-      <h2>Assigned Chores</h2>
-      <ChoreList chores={chores} />
+      <div className="mb-4">
+        <ChoreList title="All Chores" chores={chores} />
+      </div>
+      <div>
+        <ChoreList title="Assigned" chores={chores} />
+      </div>
     </div>
   )
 }
