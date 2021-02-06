@@ -9,7 +9,7 @@ import Home from './pages/Home'
 import Chores from './pages/Chores'
 import Profile from './pages/Profile'
 import fire, { writeChore } from './utils/fire'
-import ChorePostit from './components/ChorePostit'
+import PosterBoard from './components/PosterBoard'
 import ChorePostitLarge from './components/ChorePostitLarge'
 import NewChore from './pages/NewChore'
 
@@ -62,6 +62,7 @@ const App = () => {
               <Route path="/profile">
                 <Profile />
               </Route>
+              <Route path="/test" component={PosterBoard} />
             </Switch>
           </main>
         </AppStyles>

@@ -1,0 +1,29 @@
+.center-notch{
+    width: 35%;
+    height: 30px;
+    background-color: white;
+    position: absolute;
+    // top: 50;
+    left: 40%;
+}
+
+.left-notch{
+    width: 15%;
+    height: 25px;
+    background-color: white;
+    position: absolute;
+    transform: rotate(40deg);
+    border-bottom-right-radius: 20px;
+    left: 120px;
+    top: 120px;
+}
+.right-notch{
+    width: 15%;
+    height: 25px;
+    background-color: white;
+    position: absolute;
+    transform: rotate(-40deg);
+    border-bottom-left-radius: 20px;
+    right: 62px;
+    top: 120px;
+}
