@@ -26,7 +26,7 @@ function Profile() {
       </div>
       <h2 className="mt-5 mb-0 mx-auto">user</h2>
       <h3 className="mt-1 mb-0 mx-auto text-sm">Community Helper</h3>
-      <h3 className="mt-1 mb-0 mx-auto text-sm">*****</h3>
+      <h3 className="mt-1 mb-0 mx-auto text-sm">⭐ ⭐ ⭐ ⭐ ⭐</h3>
       <div className="flex justify-around">
         <div className="flex flex-col">
           <h3 className="text-base">Jobs Complete</h3>

@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 import ChorePostit from './ChorePostit'
 
 const ChoreList = ({ title = '', chores = [] }) => (
-  <div className="bg-dolfer h-auto pb-64 relitive rounded-md">
-    <div className="center-notch" />
+  <div className="bg-dolfer h-full relative rounded-md overflow-y-auto overflow-x-hidden">
+    <div className="center-notch hidden" />
     <div className="left-notch" />
     <div className="right-notch hidden" />
     <div className="flex justify-between">
@@ -16,9 +16,7 @@ const ChoreList = ({ title = '', chores = [] }) => (
     </div>
     <div className="p-2 chore_list">
       {chores &&
-        chores?.map((chore, index) => (
-          <ChorePostit id={chore?.id} key={index} />
-        ))}
+        chores?.map((chore, index) => <ChorePostit {...chore} key={index} />)}
     </div>
   </div>
 )

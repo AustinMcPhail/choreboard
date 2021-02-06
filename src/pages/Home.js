@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import ChoreList from '../components/ChoreList'
 import ChorePostit from '../components/ChorePostit'
+import PosterBoard from '../components/PosterBoard'
 import { getAllChores } from '../utils/fire'
 
 const HomeStyle = styled.div``
@@ -15,15 +16,22 @@ const Home = () => {
   useEffect(() => {
     getAllChores()
       .then((res) => {
-        setChores(Object.keys(res).map((key) => res[key]))
+        if (res) {
+          setChores(Object.keys(res).map((key) => res[key]))
+        }
       })
       .catch((err) => console.error(err))
   }, [])
   return (
-    <HomeStyle>
-      <h2>Home</h2>
-      <ChoreList title="Featured" chores={chores} />
-    </HomeStyle>
+    <>
+      <div className="mb-4">
+        <PosterBoard />
+      </div>
+      {chores?.length > 0 && <ChoreList title="Featured" chores={chores} />}
+      {!chores?.length && (
+        <p className="text-sm text-center">No Chores Posted...</p>
+      )}
+    </>
   )
 }
 

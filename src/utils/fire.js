@@ -17,7 +17,7 @@ const fire = firebase.apps.length
   ? firebase.app()
   : firebase.initializeApp(config)
 
-export const writeChore = ({ uid }, chore) => {
+export const writeChore = ({ uid }, chore) =>
   fire
     .database()
     .ref('chores')
@@ -25,7 +25,6 @@ export const writeChore = ({ uid }, chore) => {
       uid,
       ...chore,
     })
-}
 
 export const getUserInfo = (id) => {
   fire
@@ -41,6 +40,13 @@ export const getAllChores = () =>
   fire
     .database()
     .ref('chores')
+    .once('value')
+    .then((res) => res.val())
+
+export const getChore = (id) =>
+  fire
+    .database()
+    .ref(`chores/${id}`)
     .once('value')
     .then((res) => res.val())
 

@@ -25,10 +25,10 @@ function ChorePostit({
             />
           </div>
           <div className="w-full">
-            <small>Expiry of {expiry}</small>
+            {/* <small>Expiry of {expiry}</small> */}
             <h4 className="text-xl font-bold">
               <span className="bg-green-300 p-3 rounded-lg">
-                ${tasks.reduce((curr, prev) => curr + prev, 0)}
+                ${tasks.reduce((prev, curr) => +curr.taskValue + prev, 0)}
               </span>
             </h4>
           </div>
@@ -40,8 +40,8 @@ function ChorePostit({
           <ul>
             {tasks.map((t) => (
               <li className="flex justify-between">
-                <p>{t.title}</p>
-                <p>${t.value}</p>
+                <p>{t.taskTitle}</p>
+                <p>${t.taskValue}</p>
               </li>
             ))}
           </ul>

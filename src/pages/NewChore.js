@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { useFirebaseUser } from '../utils/hooks'
 import { writeChore } from '../utils/fire'
 
@@ -8,17 +8,37 @@ const NewChore = () => {
   const [details, setDetails] = useState('')
   const [taskTitle, setTaskTitle] = useState('')
   const [taskValue, setTaskValue] = useState('')
+  const [taskTitle2, setTaskTitle2] = useState('')
+  const [taskValue2, setTaskValue2] = useState('')
+  const [taskTitle3, setTaskTitle3] = useState('')
+  const [taskValue3, setTaskValue3] = useState('')
   const [rewardNegotiable, setRewardNegotiable] = useState(false)
   const user = useFirebaseUser()
+  const history = useHistory()
 
   const handleSubmit = (e) => {
     e.preventDefault()
     writeChore(user, {
       image,
       details,
-      taskTitle,
-      taskValue,
+      tasks: [
+        {
+          tasktitle: taskTitle,
+          taskvalue: taskValue,
+        },
+        {
+          taskTitle: taskTitle2,
+          taskValue: taskValue2,
+        },
+        {
+          taskTitle: taskTitle3,
+          taskValue: taskValue3,
+        },
+      ].filter((t) => t.taskTitle?.length),
       rewardNegotiable,
+    }).then((data) => {
+      const id = data.path.pieces_[1]
+      history.push(`/chore/${id}`)
     })
   }
 
@@ -89,8 +109,8 @@ const NewChore = () => {
         </div>
 
         <div className="pt-4">
-          <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-            <div className="sm:col-span-3">
+          <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 grid-cols-6">
+            <div className="col-span-3">
               <label htmlFor="last_name" className="block text-sm font-medium">
                 Task Title
               </label>
@@ -102,11 +122,11 @@ const NewChore = () => {
                   name="last_name"
                   id="last_name"
                   autoComplete="family-name"
-                  className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                  className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full text-sm border-gray-300 rounded-md"
                 />
               </div>
             </div>
-            <div className="sm:col-span-3">
+            <div className="col-span-3">
               <label htmlFor="money" className="block text-sm font-medium">
                 Value
               </label>
@@ -117,7 +137,73 @@ const NewChore = () => {
                   type="number"
                   name="last_name"
                   id="last_name"
-                  className="shadow-sm focus:ring-blue-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                  className="shadow-sm focus:ring-blue-500 focus:border-green-500 block w-full text-sm border-gray-300 rounded-md"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 grid-cols-6">
+            <div className="col-span-3">
+              <label htmlFor="last_name" className="block text-sm font-medium">
+                Task Title
+              </label>
+              <div className="mt-1">
+                <input
+                  value={taskTitle2}
+                  onChange={(e) => setTaskTitle2(e.target.value)}
+                  type="text"
+                  name="last_name"
+                  id="last_name"
+                  autoComplete="family-name"
+                  className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full text-sm border-gray-300 rounded-md"
+                />
+              </div>
+            </div>
+            <div className="col-span-3">
+              <label htmlFor="money" className="block text-sm font-medium">
+                Value
+              </label>
+              <div className="mt-1">
+                <input
+                  value={taskValue2}
+                  onChange={(e) => setTaskValue2(e.target.value)}
+                  type="number"
+                  name="last_name"
+                  id="last_name"
+                  className="shadow-sm focus:ring-blue-500 focus:border-green-500 block w-full text-sm border-gray-300 rounded-md"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 grid-cols-6">
+            <div className="col-span-3">
+              <label htmlFor="last_name" className="block text-sm font-medium">
+                Task Title
+              </label>
+              <div className="mt-1">
+                <input
+                  value={taskTitle3}
+                  onChange={(e) => setTaskTitle3(e.target.value)}
+                  type="text"
+                  name="last_name"
+                  id="last_name"
+                  autoComplete="family-name"
+                  className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full text-sm border-gray-300 rounded-md"
+                />
+              </div>
+            </div>
+            <div className="col-span-3">
+              <label htmlFor="money" className="block text-sm font-medium">
+                Value
+              </label>
+              <div className="mt-1">
+                <input
+                  value={taskValue3}
+                  onChange={(e) => setTaskValue3(e.target.value)}
+                  type="number"
+                  name="last_name"
+                  id="last_name"
+                  className="shadow-sm focus:ring-blue-500 focus:border-green-500 block w-full text-sm border-gray-300 rounded-md"
                 />
               </div>
             </div>
